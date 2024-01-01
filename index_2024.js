@@ -169,24 +169,27 @@ loader.load('models/4.obj', function (obj4) {
             //     scene.children[0].rotateZ(-3 * delta);
             // }
 
-            scene.children[0].position.z = Math.cos(clock.getElapsedTime() / 1  + Math.sin(idx) / 5) * 0.1;
+            scene.children[0].position.z = Math.cos(clock.getElapsedTime() / 1 + (Math.sin(idx) * 5)) * 0.1;
             // scene.children[0].rotation.z += (Math.cos(clock.getElapsedTime() / 10  + idx / 10) + 1) / 2 * Math.PI / 40;
 
             // scene.children[0].rotation.z += delta * Math.cos(idx)
 
-            // const scale =  1 + (Math.sin(clock.getElapsedTime() + idx/4) + 1) / 2 * 10.;
-            // scene.children[0].scale.x = scale;
-            // scene.children[0].scale.y = scale;
-            // scene.children[0].scale.z = scale;
+            const scale = window.innerWidth < 768 ? 0.75 : 1;
+            scene.children[0].scale.x = scale;
+            scene.children[0].scale.y = scale;
+            scene.children[0].scale.z = scale;
 
             if (idx === 0) {
                 scene.children[0].rotateZ(16 * delta);
+                scene.children[0].rotateX(-6 * delta);
             } else if (idx === 1) {
                 scene.children[0].rotateY(-10 * delta);
+                scene.children[0].rotateX(-6 * delta);
             } else if (idx === 2) {
-                scene.children[0].rotateX(-14 * delta);
+                scene.children[0].rotateX(-7 * delta);
             } else if (idx === 3) {
                 scene.children[0].rotateY(12 * delta);
+                scene.children[0].rotateZ(3 * delta);
             }
 
             // scene.children[0].position.z = Math.sin(delta) * 0.1;
