@@ -18,10 +18,21 @@ let objects = [null, null, null, null];
 loader.load('models/2.obj', function (obj2) {
     objects[0] = 
     {
-        geometry: obj2,
+        geometry: {...obj2},
         mirrorSize: .008,
         isObject: true,
     };
+
+    objects[2] = 
+    {
+        geometry: {...obj2},
+        mirrorSize: .008,
+        isObject: true,
+    };
+
+    if (objects.filter(d => !!d).length === 4) {
+        init();
+    }
 });
 
 loader.load('models/0.obj', function (obj0) {
@@ -31,14 +42,10 @@ loader.load('models/0.obj', function (obj0) {
         mirrorSize: .008,
         isObject: true,
     }
-});
-loader.load('models/2.obj', function (obj2) {
-    objects[2] = 
-    {
-        geometry: obj2,
-        mirrorSize: .008,
-        isObject: true,
-    };
+
+    if (objects.filter(d => !!d).length === 4) {
+        init();
+    }
 });
 
 loader.load('models/4.obj', function (obj4) {
@@ -48,7 +55,12 @@ loader.load('models/4.obj', function (obj4) {
         mirrorSize: .008,
         isObject: true,
     }
+    if (objects.filter(d => !!d).length === 4) {
+        init();
+    }
+})
 
+function init() {
     initScene();
     window.addEventListener('resize', updateSceneSize);
 
@@ -208,4 +220,4 @@ loader.load('models/4.obj', function (obj4) {
         renderer.setSize(container.clientWidth, container.clientHeight);
     }
 
-});
+};
