@@ -90,14 +90,14 @@ function init() {
             innerGeometry,
             ballInnerMaterial
         );
-        const rightEye = new THREE.Mesh(new THREE.SphereGeometry(0.0042, 32, 32), new THREE.MeshPhongMaterial({ color: 0x666666, roughness: 0, metalness: 1.0 }));
+        const rightEye = new THREE.Mesh(new THREE.SphereGeometry(0.0042, 32, 32), new THREE.MeshStandardMaterial({ color: 0x777777, roughness: 0.2, metalness: 0.5 }));
         rightEye.position.set(-0.01, 0.087, 0.026);
         const leftEye = rightEye.clone();
         leftEye.position.x = 0.013;
         leftEye.position.y = 0.084;
         leftEye.position.z = 0.028;
-        const nose = new THREE.Mesh(new THREE.SphereGeometry(0.0045, 32, 32), new THREE.MeshPhongMaterial({ color: 0x666666, roughness: 1.0, metalness: 1.0 }));
-        nose.scale.set(1.4, 1.4, 1.4);
+        const nose = new THREE.Mesh(new THREE.SphereGeometry(0.0045, 32, 32), new THREE.MeshStandardMaterial({ color: 0x777777, roughness: 1.0, metalness: 1.0 }));
+        nose.scale.set(1.4, 1.15, 1.4);
         nose.position.y = 0.078;
         nose.position.z = 0.04;
         nose.position.x = 0.001;
@@ -119,19 +119,19 @@ function init() {
         scene.userData.element = element;
         container.appendChild(element);
 
-        const camera = new THREE.PerspectiveCamera(22, scene.userData.element.clientWidth / scene.userData.element.clientHeight, 1, 10);
+        const camera = new THREE.PerspectiveCamera(22, scene.userData.element.clientWidth / scene.userData.element.clientHeight, 0.5, 10);
         // camera.position.y = 3
         // camera.position.x = 0;
         // camera.position.z = 2;
         // camera.up.set(0 , 0, 0 );
-        let offset = new THREE.Vector3( 0, 0.1, -1.5 )
+        let offset = window.innerHeight < 768 ?  new THREE.Vector3( 0, 0.1, -2.0 ) : new THREE.Vector3( 0, 0.1, -1.5 )
 
         camera.position.addVectors( scene.position, offset )
 
         scene.userData.camera = camera;
 
         const controls = new OrbitControls(scene.userData.camera, scene.userData.element);
-        controls.minDistance = 1.25;
+        controls.minDistance = 1;
         controls.maxDistance = 10;
         controls.autoRotate = true;
         controls.autoRotateSpeed = 3;
@@ -147,10 +147,10 @@ function init() {
     
         // scene.add(hemiLight);
     
-        var dirLight = new THREE.DirectionalLight(0xffffff, 0.54);
+        var dirLight = new THREE.DirectionalLight(0xffffff, 1.0);
         dirLight.position.set(-5, 12, 5);
-        dirLight.castShadow = true;
-        dirLight.shadow.mapSize = new THREE.Vector2(5524, 5524);
+        // dirLight.castShadow = true;
+        // dirLight.shadow.mapSize = new THREE.Vector2(5524, 5524);
     
         scene.add(dirLight);
 
