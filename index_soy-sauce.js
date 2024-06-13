@@ -94,10 +94,10 @@ function init() {
         rightEye.position.set(-0.01, 0.087, 0.026);
         const leftEye = rightEye.clone();
         leftEye.position.x = 0.013;
-        leftEye.position.y = 0.084;
-        leftEye.position.z = 0.028;
-        const nose = new THREE.Mesh(new THREE.SphereGeometry(0.0045, 32, 32), new THREE.MeshStandardMaterial({ color: 0x777777, roughness: 1.0, metalness: 1.0 }));
-        nose.scale.set(1.4, 1.15, 1.4);
+        leftEye.position.y = 0.083;
+        leftEye.position.z = 0.0282;
+        const nose = new THREE.Mesh(new THREE.SphereGeometry(0.0045, 32, 32), new THREE.MeshStandardMaterial({ color: 0x777777, roughness: 0.5, metalness: 0.7 }));
+        nose.scale.set(1.4, 1.15, 1.0);
         nose.position.y = 0.078;
         nose.position.z = 0.04;
         nose.position.x = 0.001;
